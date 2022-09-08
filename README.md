@@ -2,7 +2,7 @@
 
 ## OverView
 
-FishNetを利用しClient-Server モデルを実現するためのサンプル
+FishNetを利用し"Client-Serverモデル/専用サーバー型"を実現するためのサンプル
 
 ## Library
 

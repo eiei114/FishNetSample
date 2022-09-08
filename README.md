@@ -2,11 +2,13 @@
 
 ## OverView
 
+FishNetを利用しClient-Server モデルを実現するためのサンプル
+
 ## Library
 
-- UniRx
-- UniTask
-- FishNet
+- [UniRx](https://github.com/neuecc/UniRx)
+- [UniTask](https://github.com/Cysharp/UniTask)
+- [FishNet](https://github.com/FirstGearGames/FishNet)
 
 ## Architecture
 ![Client-Server](https://user-images.githubusercontent.com/60887155/189012203-ecee4a32-1ab0-4b19-9aa6-85a484d51032.png)

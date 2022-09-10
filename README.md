@@ -46,5 +46,7 @@ FishNetを利用し"Client-Serverモデル/専用サーバー型"を実現する
 ###### Networkの役割
 
 ##### ゲームフロー
+![GameFlow](https://user-images.githubusercontent.com/60887155/189492680-ccbbff0d-82ee-4d73-9a3d-d78e5bdf05bf.png)
+
 
 ## LoadMap

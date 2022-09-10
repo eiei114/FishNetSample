@@ -11,7 +11,6 @@ FishNetを利用し"Client-Serverモデル/専用サーバー型"を実現する
 - [FishNet](https://github.com/FirstGearGames/FishNet)
 ## Figure
 ![Client-Server](https://user-images.githubusercontent.com/60887155/189012203-ecee4a32-1ab0-4b19-9aa6-85a484d51032.png)
-![NetworkImple](https://user-images.githubusercontent.com/60887155/189012791-4cf8239a-7306-4d82-ac20-48b1c8e7471a.png)
 
 ## Architecture
 
@@ -30,9 +29,22 @@ FishNetを利用し"Client-Serverモデル/専用サーバー型"を実現する
 ##### 前提条件
 <details>
 <summary>ネットワークの処理とゲームロジック部分は独立させる</summary>
-- ネットワークライブラリのアップデート、差し替え、修正がやりやすくなる
-- ロジック、ネットワーク、クライアントでそれぞれのバグ修正、機能追加が容易になる
-- 作業分担の切り分けが容易になる
+  <ul>
+    <li> ネットワークライブラリのアップデート、差し替え、修正が容易になる</li>
+    <li>ロジック、ネットワーク、クライアントでそれぞれのバグ修正、機能追加が容易になる</li>
+    <li>作業分担の切り分けが容易になる</li>
+  </ul>
 </details>
+
+##### 全体クラス図
+
+![NetworkImple](https://user-images.githubusercontent.com/60887155/189012791-4cf8239a-7306-4d82-ac20-48b1c8e7471a.png)
+
+###### Viewの役割
+###### Modelの役割
+###### Presenterの役割
+###### Networkの役割
+
+##### ゲームフロー
 
 ## LoadMap

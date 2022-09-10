@@ -41,12 +41,30 @@ FishNetを利用し"Client-Serverモデル/専用サーバー型"を実現する
 ![NetworkImple](https://user-images.githubusercontent.com/60887155/189012791-4cf8239a-7306-4d82-ac20-48b1c8e7471a.png)
 
 ###### Viewの役割
+- クライアントの入力を受け取る
+- クライアントの入力をサーバーに送信する
+- サーバーから受け取ったデータを表示する
 ###### Modelの役割
+- ゲームのロジックを管理する
+- ゲームのすべてのパラメーターを保持するクラスを持つ
+- パラメーターに変更を加えるメソッドを持つ
 ###### Presenterの役割
+- クライアントの入力を受け取りModelの変更を行う
+- サーバーから受け取ったデータを元にViewの変更を行う
 ###### Networkの役割
-
+- サーバーとの接続を行う
+- サーバー上にあるViewに公開すべきデータを複製し仮想Modelを生成する
 ##### ゲームフロー
 ![GameFlow](https://user-images.githubusercontent.com/60887155/189492680-ccbbff0d-82ee-4d73-9a3d-d78e5bdf05bf.png)
 
-
+## UserInputGUI
+- ユーザーがクライアント端末に直接アクションを起こすブロック
+## ObserverUI
+- `UserInputGUI`からのアクションに対する表示の更新(ボタンを押すと表示UIが変わる)
+- `UserInputGUI`からのアクションによる情報を`GameLogic`まで流す
+- `GameLogic`から公開されてる情報からオブジェクトの位置情報や状態を画面上で表す(制限時間の更新、プレイヤーオブジェクトの位置)
+## Network
+- Client-Server間の情報を仲介するブロック
+## GameLogic
+- `UserInputGUI`からの通知などを受け取りゲームの情報を更新する
 ## LoadMap

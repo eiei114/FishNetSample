@@ -1,0 +1,14 @@
+﻿@startuml
+'https://plantuml.com/sequence-diagram
+
+start
+:UserInputGUI;
+repeat :ObserverGUI;
+:Network;
+:GameLogic;
+:Network;
+repeat while(Exit the game?)is (no) not (yes)
+end
+
+
+@enduml

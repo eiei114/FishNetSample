@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goToGameButton: {fileID: 1810563557}
+  _nameBoxFactory: {fileID: 0}
 --- !u!1 &1578273200
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578273201}
   - component: {fileID: 1578273202}
+  - component: {fileID: 1578273203}
   m_Layer: 5
   m_Name: PlayerNameList
   m_TagString: Untagged
@@ -718,6 +720,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1578273203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578273200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a489d391c57f4f1da59a778fa0ea943c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameBoxPrefab: {fileID: 148590349749055249, guid: 656e430d226eef149b3d17fc5fddca93, type: 3}
+  _nameBoxParent: {fileID: 1578273201}
 --- !u!1 &1745470569
 GameObject:
   m_ObjectHideFlags: 0

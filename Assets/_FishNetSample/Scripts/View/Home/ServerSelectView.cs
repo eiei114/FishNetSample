@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ namespace _FishNetSample.Scripts.View.Home
 
         [SerializeField] private Button _clientToLocalServerButton;
 
-        public void Initialize()
+        public async UniTask Initialize()
         {
             // ボタンのイベントを購読
             _localhostButton.OnClickAsObservable().Subscribe(_ => _onServerSelect.OnNext(Server.Localhost));

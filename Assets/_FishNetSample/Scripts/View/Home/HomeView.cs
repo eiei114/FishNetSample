@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ namespace _FishNetSample.Scripts.View.Home
         public IObservable<string> NameInputObservable => _nameInputSubject;
         public IObservable<Unit> StartButtonObservable => _startButtonSubject;
 
-        public void Initialize()
+        public async UniTask Initialize()
         {
             // ボタンのクリックイベントを購読
             _startButton.OnClickAsObservable().Subscribe(_ => _startButtonSubject.OnNext(Unit.Default)).AddTo(this);

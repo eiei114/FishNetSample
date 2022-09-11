@@ -1,8 +1,10 @@
-﻿namespace _FishNetSample.Scripts.View
+﻿using Cysharp.Threading.Tasks;
+
+namespace _FishNetSample.Scripts.View
 {
     public interface IView
     {
-        void Initialize();
+        UniTask Initialize();
         void Show();
         void Hide();
     }

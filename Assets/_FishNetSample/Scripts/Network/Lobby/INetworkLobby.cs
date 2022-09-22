@@ -2,7 +2,7 @@
 {
     public interface INetworkLobby
     {
-        public int PlayerCount { get; }
-        public int MaxPlayerCount { get; }
+        public int SyncPlayerCount { get; set; }
+        public int SyncMaxPlayerCount { get; set; }
     }
 }

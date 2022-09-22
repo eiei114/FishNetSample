@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading;
+using _FishNetSample.Scripts.Network;
 using _FishNetSample.Scripts.Network.Home;
 using _FishNetSample.Scripts.View.Home;
+using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Linq;
 using UniRx;
 using UnityEngine;
@@ -17,9 +20,13 @@ namespace _FishNetSample.Scripts.Presenter.Home
 
         [SerializeField] private NetworkManagerHomeWrapper networkManagerHomeWrapper;
 
+        [SerializeField] private NetworkLobbyManagerImpl networkLobbyManager;
+
+        private CancellationToken _token;
 
         private void Awake()
         {
+            _token = this.GetCancellationTokenOnDestroy();
             networkManagerHomeWrapper.Initialized();
             HomeViewInitialize();
             ServerSelectViewInitialize();
@@ -29,6 +36,7 @@ namespace _FishNetSample.Scripts.Presenter.Home
         private async void HomeViewInitialize()
         {
             await _homeView.Initialize();
+
             _homeView.NameInputObservable.Subscribe(name => { Debug.Log(name); }).AddTo(this);
 
             _homeView.StartButtonObservable.Subscribe(_ =>
@@ -41,29 +49,30 @@ namespace _FishNetSample.Scripts.Presenter.Home
         private async void ServerSelectViewInitialize()
         {
             await _serverSelectView.Initialize();
-            _serverSelectView.ServerSelect.Where(value => value == Server.Localhost).
-                Subscribe(value =>
-                {
-                    networkManagerHomeWrapper.StartLocalhost();
-                    ChangeToConnectingView();
-                }).AddTo(this);
+            _serverSelectView.ServerSelect.Where(value => value == Server.Localhost).Subscribe(value =>
+            {
+                networkManagerHomeWrapper.StartLocalhost();
+                ChangeToConnectingView();
+            }).AddTo(this);
 
-            _serverSelectView.ServerSelect.Where(value => value == Server.ClientToLocalServer).
-                Subscribe(value =>
-                {
-                    networkManagerHomeWrapper.StartClient();
-                    ChangeToConnectingView();
-                }).AddTo(this);
+            _serverSelectView.ServerSelect.Where(value => value == Server.ClientToLocalServer).Subscribe(value =>
+            {
+                networkManagerHomeWrapper.StartClient();
+                ChangeToConnectingView();
+            }).AddTo(this);
         }
 
         private async void ConnectingViewInitialize()
         {
             await _connectingView.Initialize();
-            UniTaskAsyncEnumerable.EveryValueChanged(networkManagerHomeWrapper, value => value.CurrentPlayerCount)
-                .Subscribe(value =>
+            UniTaskAsyncEnumerable.
+                EveryValueChanged(networkLobbyManager, value => value.CurrentPlayerCount).
+                Subscribe(value =>
                 {
-                    _connectingView.SetPlayerCount(value,networkManagerHomeWrapper.MaxPlayerCount);
-                }).AddTo(this);
+                    Debug.Log($"コネクト中");
+
+                    _connectingView.SetPlayerCount(value, networkLobbyManager.MaxPlayerCount);
+                }, _token);
             _connectingView.DisconnectObservable.Subscribe(_ => { networkManagerHomeWrapper.StopClient(); }).
                 AddTo(this);
         }
@@ -74,7 +83,7 @@ namespace _FishNetSample.Scripts.Presenter.Home
             _homeView.Hide();
             _serverSelectView.Show();
         }
-        
+
         private void ChangeToConnectingView()
         {
             _serverSelectView.Hide();

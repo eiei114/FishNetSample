@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goToGameButton: {fileID: 1810563557}
-  _nameBoxFactory: {fileID: 0}
+  _nameBoxFactory: {fileID: 1578273203}
 --- !u!1 &1578273200
 GameObject:
   m_ObjectHideFlags: 0

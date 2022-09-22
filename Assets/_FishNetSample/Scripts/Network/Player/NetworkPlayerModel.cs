@@ -12,6 +12,8 @@ namespace _FishNetSample.Scripts.Network.Player
         [field: SyncVar()] public string PayerName { get; set; } = "";
 
         [field: SyncVar()] public int PlayerScore { get; set; } = 0;
+        
+
 
         [Server]
         public void InitServer(IPlayerModel model)

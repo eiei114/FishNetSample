@@ -1738,6 +1738,10 @@ GameObject:
   - component: {fileID: 1440244201}
   - component: {fileID: 1440244200}
   - component: {fileID: 1440244202}
+  - component: {fileID: 1440244206}
+  - component: {fileID: 1440244205}
+  - component: {fileID: 1440244204}
+  - component: {fileID: 1440244203}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1789,7 +1793,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782a372eded9415abc2f5ca6ee89db05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1440244203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440244199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15895a51081447d46bda466e7e830c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneProcessor: {fileID: 0}
+  _lightProbeUpdating: 0
+  _moveClientHostObjects: 1
+  _setActiveScene: 1
+--- !u!114 &1440244204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440244199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4823f83c364c2c966acf8836334dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneManager: {fileID: 1440244203}
+  _homeScene: Assets/_FishNetSample/Scenes/Home.unity
+  _lobbyScene: Assets/_FishNetSample/Scenes/Lobby.unity
+  _battleScene: Assets/_FishNetSample/Scenes/Main.unity
+  _replaceOption: 0
+--- !u!114 &1440244205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440244199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a35fdf6a9c46d8bc1a3f3538d1eecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lobbyPrefab: {fileID: 460906439911882826, guid: 33b94d7ea6e37ca4ea9d1f24ddfe96c5, type: 3}
+--- !u!114 &1440244206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440244199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c97bce51444ec888c925e0ea87e99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _changeScene: {fileID: 1440244204}
   _maxPlayerCount: 2
+  _currentPlayerCount: 0
+  _lobbyPlayerFactory: {fileID: 1440244205}
 --- !u!1 &1511773215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2214,7 @@ MonoBehaviour:
   _serverSelectView: {fileID: 861873425}
   _connectingView: {fileID: 399818693}
   networkManagerHomeWrapper: {fileID: 1440244202}
+  networkLobbyManager: {fileID: 1440244206}
 --- !u!1 &1896897567
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,10 +2,9 @@
 
 namespace _FishNetSample.Scripts.View.Player
 {
-    public class PlayerViewModel:MonoBehaviour,IPlayerViewModelDisposable
+    public class LobbyPlayerView:MonoBehaviour,ILobbyPlayerViewDisposable
     {
-        public string Name { get; }
-        public int Score { get; }
+        public string Name { get; } = "";
 
         public void Dispose()
         {

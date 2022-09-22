@@ -17,8 +17,11 @@ namespace _FishNetSample.Scripts.View.Home
         public IObservable<string> NameInputObservable => _nameInputSubject;
         public IObservable<Unit> StartButtonObservable => _startButtonSubject;
 
+        
+
         public async UniTask Initialize()
         {
+
             // ボタンのクリックイベントを購読
             _startButton.OnClickAsObservable().Subscribe(_ => _startButtonSubject.OnNext(Unit.Default)).AddTo(this);
 

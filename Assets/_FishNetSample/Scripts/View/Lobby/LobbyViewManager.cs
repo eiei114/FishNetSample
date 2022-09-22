@@ -11,11 +11,13 @@ namespace _FishNetSample.Scripts.View.Lobby
 
         [SerializeField] private PlayerInfo _playerInfo;
 
-        public IPlayerViewModelDisposable CreatePlayerNameView(string playerName)
+        public ILobbyPlayerViewDisposable CreatePlayerNameView(string playerName)
         {
+            Debug.Log($"NameBox生成");
             
+            var lobbyEntry= _lobbyView.AddNameBox(playerName);
 
-            return null;
+            return lobbyEntry;
         }
     }
 }

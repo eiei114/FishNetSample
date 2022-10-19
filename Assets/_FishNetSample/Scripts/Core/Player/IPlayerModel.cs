@@ -13,9 +13,15 @@
     /// </summary>
     public interface IPlayerModelCommand
     {
+        public void IncrementScore();
     }
     
     public interface IPlayerModel : IPlayerModelQuery, IPlayerModelCommand
     {
+    }
+    
+    public interface IPlayerModelMutable : IPlayerModel
+    {
+        public void SetName(string name);
     }
 }

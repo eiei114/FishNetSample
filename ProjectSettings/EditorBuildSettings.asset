@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/_FishNetSample/Scenes/Home.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/_FishNetSample/Scenes/Lobby.unity
-    guid: 27097d0af23cbd04bbc8c928e3d50085
-  - enabled: 1
-    path: Assets/_FishNetSample/Scenes/Main.unity
+    path: Assets/_FishNetSample/Scenes/Battle.unity
     guid: 7afdc90db2787db4083e6cc82929bdc1
   m_configObjects: {}

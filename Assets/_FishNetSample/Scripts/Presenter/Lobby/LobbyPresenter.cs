@@ -22,13 +22,13 @@ namespace _FishNetSample.Scripts.Presenter.Lobby
 
         private async void LobbyViewInitialize()
         {
-            await _lobbyView.Initialized(_token);
-
-            _lobbyView.GoToGameObservable.Subscribe(async _ =>
-            {
-                await NetworkLobbyManagerImpl.Instance.ChangeScene.
-                    AllClientsLoadNewScene(SceneType.Main, _token);
-            }).AddTo(this);
+            // await _lobbyView.Initialized(_token);
+            //
+            // _lobbyView.GoToGameObservable.Subscribe(async _ =>
+            // {
+            //     await NetworkManagerImpl.Instance.ChangeScene.
+            //         AllClientsLoadNewScene(SceneType.Main, _token);
+            // }).AddTo(this);
         }
     }
 }

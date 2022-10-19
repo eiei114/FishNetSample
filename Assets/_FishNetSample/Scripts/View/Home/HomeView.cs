@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -13,13 +14,14 @@ namespace _FishNetSample.Scripts.View.Home
 
         private readonly Subject<string> _nameInputSubject = new Subject<string>();
         private readonly Subject<Unit> _startButtonSubject = new Subject<Unit>();
+        private IView _viewImplementation;
 
         public IObservable<string> NameInputObservable => _nameInputSubject;
         public IObservable<Unit> StartButtonObservable => _startButtonSubject;
 
         
 
-        public async UniTask Initialize()
+        public async UniTask Initialize(CancellationToken token)
         {
 
             // ボタンのクリックイベントを購読

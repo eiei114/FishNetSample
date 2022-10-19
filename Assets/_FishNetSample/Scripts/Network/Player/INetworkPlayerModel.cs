@@ -2,7 +2,7 @@
 {
     public interface INetworkPlayerModel
     {
-        public string PayerName { get; set; }
-        public int PlayerScore { get; set; }
+        public string SyncName { get; set; }
+        public int SyncScore { get; set; }
     }
 }

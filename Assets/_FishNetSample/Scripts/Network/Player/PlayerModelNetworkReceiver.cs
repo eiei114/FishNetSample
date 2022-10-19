@@ -6,8 +6,8 @@ namespace _FishNetSample.Scripts.Network.Player
     {
         public PlayerModelNetworkReceiver(INetworkPlayerModel playerModel)
         {
-            Name = playerModel.PayerName;
-            Score = playerModel.PlayerScore;
+            Name = playerModel.SyncName;
+            Score = playerModel.SyncScore;
         }
 
         public string Name { get; }

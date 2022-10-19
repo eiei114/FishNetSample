@@ -22,7 +22,6 @@ namespace _FishNetSample.Scripts.Network.Lobby
         public override void OnStartServer()
         {
             base.OnStartServer();
-            _modelHost = NetworkLobbyManagerImpl.Instance.InitializeLobbyModel();
 
             new LobbyPresenterHost(_modelHost, _lobbyViewManager.LobbyView).AddTo(this);
             new LobbyNetworkReader(_modelHost, this).AddTo(this);

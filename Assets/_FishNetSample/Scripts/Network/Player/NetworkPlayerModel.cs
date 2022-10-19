@@ -1,36 +1,53 @@
-﻿using _FishNetSample.Scripts.Core.Factory;
+﻿using System;
+using _FishNetSample.Scripts.Core.Factory;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UniRx;
+using UnityEngine;
 
 namespace _FishNetSample.Scripts.Network.Player
 {
-    public class NetworkPlayerModel : NetworkBehaviour, INetworkPlayerModel
+    public class NetworkPlayerModel : NetworkBehaviour, INetworkPlayerModel, IPlayerModelCommand
     {
         private IPlayerModel _model;
 
-        [field: SyncVar()] public string PayerName { get; set; } = "";
+        private IPlayerModelMutable _serverModel;
+        private IPlayerModelQuery _clientModelQuery;
 
-        [field: SyncVar()] public int PlayerScore { get; set; } = 0;
-        
+        [field: SyncVar()] public string SyncName { get; set; } = "";
 
+        [field: SyncVar()] public int SyncScore { get; set; } = 0;
+
+        private void Awake()
+        {
+            _serverModel = GetComponent<IPlayerModelMutable>();
+        }
 
         [Server]
-        public void InitServer(IPlayerModel model)
+        public void InitServer(string name)
         {
-            _model = model;
-            new PlayerModelNetworkSender(_model, this).AddTo(this);
+            _serverModel.SetName(name);
+
+
+            new PlayerModelNetworkSender(_serverModel, this).AddTo(this);
         }
 
         public override void OnStartClient()
         {
             base.OnStartClient();
-            
+
+            //クライアントサイドからセーバー上にあるモデルにアクセスできないようにする。
+            if (IsClientOnly)
+            {
+                ((MonoBehaviour)_serverModel).enabled = false;
+            }
+
+
             //Create ClientModel.
-            var clientModel = new PlayerModelNetworkReceiver(this);
-            
+            _clientModelQuery = new PlayerModelNetworkReceiver(this);
+
             // todo view生成
-            
+
             //Presenter生成
             // new PlayerPresenterClient(clientModel, view);
 
@@ -39,6 +56,13 @@ namespace _FishNetSample.Scripts.Network.Player
             {
                 //Viewの初期化
             }
+        }
+
+
+        [ServerRpc]
+        public void IncrementScore()
+        {
+            _serverModel.IncrementScore();
         }
     }
 }

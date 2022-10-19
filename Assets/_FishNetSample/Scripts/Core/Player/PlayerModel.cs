@@ -1,14 +1,22 @@
-﻿namespace _FishNetSample.Scripts.Core.Factory
+﻿using UnityEngine;
+
+namespace _FishNetSample.Scripts.Core.Factory
 {
-    public class PlayerModel
+    public class PlayerModel : MonoBehaviour, IPlayerModelMutable
     {
-        public PlayerModel(string name, int score)
+        [SerializeField] private string _name;
+        [SerializeField] private int _score;
+        public string Name => _name;
+        public int Score => _score;
+
+        public void SetName(string name)
         {
-            Name = name;
-            Score = score;
+            _name = name;
         }
-        
-        public string Name { get;}
-        public int Score { get;}
+
+        public void IncrementScore()
+        {
+            _score++;
+        }
     }
 }
